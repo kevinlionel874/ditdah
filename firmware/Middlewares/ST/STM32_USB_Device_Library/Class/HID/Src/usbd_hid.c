@@ -1,3 +1,4 @@
+/* DITDAH_KEYBOARD_PATCH: this file was changed from a mouse to a boot keyboard by firmware/tools/patch-hid-keyboard.ps1 */
 /**
   ******************************************************************************
   * @file    usbd_hid.c
@@ -158,7 +159,7 @@ __ALIGN_BEGIN static uint8_t USBD_HID_CfgFSDesc[USB_HID_CONFIG_DESC_SIZ]  __ALIG
   0x01,         /*bNumEndpoints*/
   0x03,         /*bInterfaceClass: HID*/
   0x01,         /*bInterfaceSubClass : 1=BOOT, 0=no boot*/
-  0x02,         /*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/
+  0x01,         /*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/
   0,            /*iInterface: Index of string descriptor*/
   /******************** Descriptor of Joystick Mouse HID ********************/
   /* 18 */
@@ -208,7 +209,7 @@ __ALIGN_BEGIN static uint8_t USBD_HID_CfgHSDesc[USB_HID_CONFIG_DESC_SIZ]  __ALIG
   0x01,         /*bNumEndpoints*/
   0x03,         /*bInterfaceClass: HID*/
   0x01,         /*bInterfaceSubClass : 1=BOOT, 0=no boot*/
-  0x02,         /*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/
+  0x01,         /*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/
   0,            /*iInterface: Index of string descriptor*/
   /******************** Descriptor of Joystick Mouse HID ********************/
   /* 18 */
@@ -258,7 +259,7 @@ __ALIGN_BEGIN static uint8_t USBD_HID_OtherSpeedCfgDesc[USB_HID_CONFIG_DESC_SIZ]
   0x01,         /*bNumEndpoints*/
   0x03,         /*bInterfaceClass: HID*/
   0x01,         /*bInterfaceSubClass : 1=BOOT, 0=no boot*/
-  0x02,         /*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/
+  0x01,         /*nInterfaceProtocol : 0=none, 1=keyboard, 2=mouse*/
   0,            /*iInterface: Index of string descriptor*/
   /******************** Descriptor of Joystick Mouse HID ********************/
   /* 18 */
@@ -317,52 +318,29 @@ __ALIGN_BEGIN static uint8_t USBD_HID_DeviceQualifierDesc[USB_LEN_DEV_QUALIFIER_
 
 __ALIGN_BEGIN static uint8_t HID_MOUSE_ReportDesc[HID_MOUSE_REPORT_DESC_SIZE]  __ALIGN_END =
 {
-  0x05,   0x01,
-  0x09,   0x02,
-  0xA1,   0x01,
-  0x09,   0x01,
-
-  0xA1,   0x00,
-  0x05,   0x09,
-  0x19,   0x01,
-  0x29,   0x03,
-
-  0x15,   0x00,
-  0x25,   0x01,
-  0x95,   0x03,
-  0x75,   0x01,
-
-  0x81,   0x02,
-  0x95,   0x01,
-  0x75,   0x05,
-  0x81,   0x01,
-
-  0x05,   0x01,
-  0x09,   0x30,
-  0x09,   0x31,
-  0x09,   0x38,
-
-  0x15,   0x81,
-  0x25,   0x7F,
-  0x75,   0x08,
-  0x95,   0x03,
-
-  0x81,   0x06,
-  0xC0,   0x09,
-  0x3c,   0x05,
-  0xff,   0x09,
-
-  0x01,   0x15,
-  0x00,   0x25,
-  0x01,   0x75,
-  0x01,   0x95,
-
-  0x02,   0xb1,
-  0x22,   0x75,
-  0x06,   0x95,
-  0x01,   0xb1,
-
-  0x01,   0xc0
+  0x05, 0x01,  /* Usage Page (Generic Desktop) */
+  0x09, 0x06,  /* Usage (Keyboard) */
+  0xA1, 0x01,  /* Collection (Application) */
+  0x05, 0x07,  /*   Usage Page (Key Codes) */
+  0x19, 0xE0,  /*   Usage Minimum (Left Control) */
+  0x29, 0xE7,  /*   Usage Maximum (Right GUI) */
+  0x15, 0x00,  /*   Logical Minimum (0) */
+  0x25, 0x01,  /*   Logical Maximum (1) */
+  0x75, 0x01,  /*   Report Size (1) */
+  0x95, 0x08,  /*   Report Count (8) */
+  0x81, 0x02,  /*   Input (Data, Variable, Absolute): modifier byte */
+  0x95, 0x01,  /*   Report Count (1) */
+  0x75, 0x08,  /*   Report Size (8) */
+  0x81, 0x01,  /*   Input (Constant): reserved byte */
+  0x95, 0x06,  /*   Report Count (6) */
+  0x75, 0x08,  /*   Report Size (8) */
+  0x15, 0x00,  /*   Logical Minimum (0) */
+  0x25, 0x73,  /*   Logical Maximum (0x73 = F24) */
+  0x05, 0x07,  /*   Usage Page (Key Codes) */
+  0x19, 0x00,  /*   Usage Minimum (0) */
+  0x29, 0x73,  /*   Usage Maximum (0x73) */
+  0x81, 0x00,  /*   Input (Data, Array): 6 key codes */
+  0xC0         /* End Collection */
 };
 
 /**

@@ -27,6 +27,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ditdah/bringup.h"
+#include "ditdah/usb_reconnect.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -85,7 +86,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  usb_force_reconnect();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */

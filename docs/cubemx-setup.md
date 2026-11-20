@@ -23,7 +23,9 @@ If the scripts can't find CubeIDE, set `STM32CUBEIDE_DIR` to the folder that con
 
 1. Open `firmware/firmware.ioc` in STM32CubeMX.
 2. Change what you need. Keep **Project Manager → Toolchain / IDE** on **CMake**.
-3. Click **GENERATE CODE**, then run `.\build.ps1`.
+3. Click **GENERATE CODE**.
+4. Run `.\tools\patch-hid-keyboard.ps1`. CubeMX rewrites the USB HID class as a mouse every time it generates; this turns it back into a keyboard. `build.ps1` stops with a reminder if you forget.
+5. Run `.\build.ps1`.
 
 Our code goes only inside `/* USER CODE BEGIN ... */` blocks or in `Core/Src/ditdah/` and `Core/Inc/ditdah/`, so regenerating never overwrites it.
 

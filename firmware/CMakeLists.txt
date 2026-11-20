@@ -50,6 +50,9 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Core/Src/ditdah/sh1106.c
     Core/Src/ditdah/mprls.c
     Core/Src/ditdah/bringup.c
+    Core/Src/ditdah/keyboard.c
+    Core/Src/ditdah/keyboard_map.c
+    Core/Src/ditdah/usb_reconnect.c
 )
 
 # Add include paths

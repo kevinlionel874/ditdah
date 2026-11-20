@@ -7,6 +7,7 @@
 #include "main.h"
 #include "i2c.h"
 #include "tim.h"
+#include "ditdah/keyboard.h"
 #include "ditdah/log.h"
 #include "ditdah/mprls.h"
 #include "ditdah/sh1106.h"
@@ -133,6 +134,10 @@ static bool update_inputs(uint32_t now)
     {
       in->stable = down;
       log_printf("[input] %s %s", in->name, down ? "down" : "up");
+      if (down && i == 0u) /* the big button (jack 1) types "e" to test the USB keyboard */
+      {
+        log_printf("[usb] typing e: %s", keyboard_type_char('e') ? "queued" : "not connected");
+      }
     }
     if (in->stable)
     {
@@ -144,8 +149,8 @@ static bool update_inputs(uint32_t now)
 
 static void handle_sample(int32_t dhpa)
 {
-  char abs_text[12];
-  char delta_text[12];
+  char abs_text[16];
+  char delta_text[16];
 
   pressure_dhpa = dhpa;
   pressure_valid = true;
@@ -205,9 +210,9 @@ static void update_pressure(uint32_t now)
 
 static void draw_oled_line(uint8_t line)
 {
-  char text[SH1106_CHARS_PER_LINE + 1];
-  char a[12];
-  char b[12];
+  char text[32]; /* the OLED shows the first 21 characters */
+  char a[16];
+  char b[16];
 
   switch (line)
   {
@@ -338,4 +343,5 @@ void bringup_loop(void)
   }
   update_pressure(now);
   update_oled(now);
+  keyboard_poll();
 }

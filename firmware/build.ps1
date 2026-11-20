@@ -23,11 +23,18 @@ function Find-Tool($pattern, $exe) {
     if (-not $dir) { throw "Can't find $exe in $plugins" }
     return Join-Path $dir.FullName "tools\bin"
 }
-$env:PATH = @(
+$toolDirs = @(
     (Find-Tool "com.st.stm32cube.ide.mcu.externaltools.cmake.*" "cmake"),
     (Find-Tool "com.st.stm32cube.ide.mcu.externaltools.ninja.*" "ninja"),
     (Find-Tool "com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.*" "arm-none-eabi-gcc")
-) -join ";" + ";" + $env:PATH
+)
+$env:PATH = ($toolDirs -join ";") + ";" + $env:PATH
+
+# CubeMX overwrites the USB HID class with its mouse version every time it generates code.
+$hidC = Join-Path $PSScriptRoot "Middlewares\ST\STM32_USB_Device_Library\Class\HID\Src\usbd_hid.c"
+if (-not (Select-String -Path $hidC -Pattern "DITDAH_KEYBOARD_PATCH" -Quiet)) {
+    throw "The USB HID files are the CubeMX mouse version (CubeMX regenerated them). Run .\tools\patch-hid-keyboard.ps1, then build again."
+}
 
 # CMake prints normal messages on stderr; Windows PowerShell would treat them as errors under "Stop".
 $ErrorActionPreference = "Continue"
