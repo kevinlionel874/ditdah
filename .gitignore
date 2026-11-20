@@ -1,0 +1,33 @@
+# Dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Environment and secrets (never commit API keys)
+.env
+.env.*
+!.env.example
+
+# Firmware build output (CMake + Ninja, and CubeIDE if used)
+firmware/build/
+firmware/.mxproject
+firmware/**/Debug/
+firmware/**/Release/
+*.o
+*.d
+*.elf
+*.map
+*.list
+
+# C test build output
+decoder/c/build/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Keep .kiro in the repo: Kiroween requires it.
