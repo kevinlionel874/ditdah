@@ -70,4 +70,4 @@ A pin can supply only about 20 mA and the motor needs 60–90 mA, so B0 switches
 
 ## If the computer doesn't see DitDah
 
-Many Blue Pills have the wrong pull-up resistor on USB D+ (R10 is 10 kΩ or 4.7 kΩ instead of 1.5 kΩ). If a computer doesn't recognize the board, solder a 2 kΩ resistor (anything from 1.5 to 2.2 kΩ) between **A12** and **3.3**.
+Many Blue Pills have the wrong pull-up resistor on USB D+ (R10 is 10 kΩ or 4.7 kΩ instead of 1.5 kΩ). If a computer doesn't recognize the board, add a 2 kΩ resistor (anything from 1.5 to 2.2 kΩ) between **A12** and **3.3**. With the Blue Pill on a breadboard, no soldering is needed: plug the resistor from the A12 row to the 3.3V rail. Check first: R10 (next to the USB port) marked `103` or `01C` (10 kΩ) or `472` (4.7 kΩ) needs the fix; `152` (1.5 kΩ) doesn't.

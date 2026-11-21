@@ -1,11 +1,11 @@
 # DitDah
 
-**Type with one button.** DitDah turns Morse code into an assistive keyboard. Anyone who can press one thing — a big button by hand, the same button on the floor with a foot, two switches, any switch with a 3.5mm plug, or a sip and a puff on a tube — can type on any computer.
+**Type with one button.** DitDah is an open-source assistive keyboard that uses Morse code. Anyone who can press one thing — a big button by hand, the same button on the floor with a foot, two switches, any switch with a 3.5mm plug, or a sip and a puff on a tube — can type on any computer, with no driver and no special software.
 
-Built for [Kiroween 2026](https://kiroween.devpost.com) in the Resurrection category: Morse code is from the 1840s, and it turns out to be a very good way to type when you can only control one or two movements.
+Commercial switch-access systems are expensive and often tied to one app. Morse code is from the 1840s, and it is still one of the fastest ways to type when you can reliably control only one or two movements. DitDah pairs it with cheap parts (about $90 for the prototype) and a free web app that predicts words and speaks text aloud.
 
-> **Status:** work in progress during the hackathon (Nov 17 – Dec 4, 2026).
-> DitDah is a student prototype, **not a medical device**.
+> **Status:** early prototype, under active development. The first complete version is due in early December 2026.
+> DitDah is **not a medical device**. See [Safety](#safety).
 
 ## How it works
 
@@ -100,6 +100,18 @@ About $93 of new parts, plus things we already had.
 
 DitDah is a plain USB keyboard, so the Studio needs no special connection: it just receives letters, spaces, Backspace and Enter. One extra key, **F13**, means "accept the suggestion". In the Studio, switch to **device mode** so the spacebar types a normal space.
 
+## Roadmap
+
+The first version is a USB keyboard on a breadboard in a 3D-printed box, plus the web Studio. Next we want a cheaper custom board, a wireless version for phones and tablets, word prediction that works offline, and testing with people who use switches every day. See [docs/roadmap.md](docs/roadmap.md).
+
+## Contributing
+
+Issues and pull requests are welcome, especially from people who use switch access, occupational therapists, and caregivers: tell us what gets in the way. Each part has a spec in `.kiro/specs/` (requirements, design and tasks) that explains how it is meant to work; start there. Please run the tests for the part you change before opening a pull request.
+
+## How it started
+
+DitDah started at [Kiroween 2026](https://kiroween.devpost.com), a hackathon run by Kiro, in the Resurrection category (bringing an old technology back to life). We are continuing it after the hackathon.
+
 ## Built with Kiro
 
 We used Kiro's steering docs to hold the rules every change must follow (for example: no blocking delays in the firmware main loop, and the TypeScript and C decoders must stay identical), specs to break each part into requirements, a design and a task list, hooks to run the tests on every save, and property-based tests to check the decoder against human timing. Notes and screenshots of where this caught real problems are in `docs/kiro-moments/`.
@@ -108,7 +120,7 @@ We also used Claude (an AI assistant) to help draft the specs and test cases and
 
 ## Safety
 
-- DitDah is a prototype for a hackathon, not a medical or certified assistive device.
+- DitDah is a prototype, not a medical or certified assistive device. Don't rely on it as someone's only way to call for help.
 - Each sip-and-puff user needs their own mouthpiece. Never share one.
 
 ## Team

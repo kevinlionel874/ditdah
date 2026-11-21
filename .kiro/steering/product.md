@@ -6,11 +6,14 @@ inclusion: always
 
 DitDah turns Morse code into an assistive keyboard. Anyone who can press one thing (a big button, a foot switch, any switch with a 3.5mm plug, or a sip and puff on a tube) can type on any computer.
 
+DitDah is a long-term open-source project. It started at the Kiroween 2026 hackathon, and the first complete version is due on Dec 2, 2026; work continues after that (see `docs/roadmap.md`).
+
 ## Who it's for
 
 - People with severe motor disabilities, such as ALS, cerebral palsy or spinal cord injury, who can reliably control only one or two switches.
 - Caregivers, occupational therapists and family members who set the device up.
-- Hackathon judges, who will mostly try the web Studio with a spacebar and watch the hardware in the demo video.
+- People trying DitDah without the hardware, including hackathon judges, who will mostly use the web Studio with a spacebar and watch the hardware in the demo video.
+- Contributors, who need clear specs, tests and docs to pick up a part.
 
 ## The three parts
 
@@ -23,11 +26,14 @@ DitDah turns Morse code into an assistive keyboard. Anyone who can press one thi
 - **Accessibility first.** Large text, high contrast, everything usable by keyboard alone, and nothing that requires fine motor control.
 - **Fewer presses.** Every feature is judged by whether it reduces the number of dits and dahs a person needs.
 - **Works offline.** The device types without the Studio, and word completion falls back to a built-in list when AI is unavailable.
-- **Honest limits.** DitDah is a student prototype, not a medical device. Say so in the UI and docs.
+- **Honest limits.** DitDah is a prototype, not a medical device. Say so in the UI and docs.
 - **Hygiene.** Sip-and-puff users each use their own mouthpiece; never suggest sharing one.
 
-## Out of scope for the hackathon
+## Out of scope for version 1 (until Dec 2, 2026)
+
+Don't start these before version 1 ships, even if they look easy. They are on the roadmap for later.
 
 - Bluetooth or wireless connections
 - Phone apps
 - Languages other than English for the Morse alphabet
+- A custom circuit board
