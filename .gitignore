@@ -24,6 +24,8 @@ firmware/**/Release/
 
 # C test build output
 decoder/c/build/
+decoder/c/test_decoder
+decoder/c/test_decoder.exe
 
 # OS and editor files
 .DS_Store

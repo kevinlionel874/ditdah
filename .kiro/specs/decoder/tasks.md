@@ -40,13 +40,13 @@
   - Turn on the adaptive convergence property and make it pass
   - _Requirements: 7.1, 7.2, 7.3, 7.4_
 
-- [ ] 8. Port the decoder to C
+- [x] 8. Port the decoder to C
   - Create `decoder/c/morse_decoder.h` and `decoder/c/morse_decoder.c` with the C API in design.md
   - Plain C99, no dynamic memory, state of 64 bytes or less, no HAL includes
   - Same alphabet, rules and adaptive behavior as the TypeScript version
   - _Requirements: 8.1, 9.3_
 
-- [ ] 9. Test the C decoder against the shared vectors
+- [x] 9. Test the C decoder against the shared vectors
   - Create `decoder/c/test_decoder.c` that runs every case in `spec/morse_vectors.h` with the runner from design.md and prints any mismatch
   - Create `decoder/c/Makefile` with `make test` (gcc, `-std=c99 -Wall -Wextra -Werror`), exiting non-zero on failure
   - Add a `static_assert` that `sizeof(md_decoder_t) <= 64`
