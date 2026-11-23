@@ -1,6 +1,6 @@
 # Implementation Plan
 
-- [ ] 1. Install the decoder package and check the test runner
+- [x] 1. Install the decoder package and check the test runner
   - Run `npm install` in `decoder/`
   - Run `npm test`; the shared-vector tests should fail only because `src/morse-decoder.ts` is missing
   - _Requirements: 8.1_
@@ -12,19 +12,19 @@
   - Add unit tests in `decoder/test/morse-table.test.ts`: every character round-trips through `encode` and `lookup`; the three special codes; a 9-element pattern is unknown
   - _Requirements: 3.1, 3.2, 3.3, 4.1, 4.2, 4.3_
 
-- [ ] 3. Write the single-switch decoder
+- [x] 3. Write the single-switch decoder
   - Create `decoder/src/morse-decoder.ts` with `MorseDecoder` as specified in design.md: `keyDown`, `keyUp`, `tick`, `flush`, `unitMs`, `pattern`, `reset`
   - Implement the timing table, the word-in-progress flag and the "no doubled spaces" rule
   - Clamp the unit to 48–200 ms; treat negative durations as 0 and cap durations at 60 s
   - Export everything from `decoder/src/index.ts`, including `toToken`
   - _Requirements: 1.1–1.4, 2.1–2.4, 4.4, 6.1–6.5_
 
-- [ ] 4. Make every shared vector pass
+- [x] 4. Make every shared vector pass
   - Run `npm test` and fix the decoder until all 69 cases in `test/vectors.test.ts` pass
   - Do not change the vectors to make tests pass; if a vector looks wrong, raise it with the team
   - _Requirements: 8.1_
 
-- [ ] 5. Add two-switch mode
+- [x] 5. Add two-switch mode
   - In dual mode the key passed to `keyDown`/`keyUp` decides dit or dah; press length is ignored
   - The `dual-*` vectors must pass
   - _Requirements: 5.1, 5.2, 5.3, 5.4_
