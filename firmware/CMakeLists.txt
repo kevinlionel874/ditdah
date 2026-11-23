@@ -53,11 +53,15 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Core/Src/ditdah/keyboard.c
     Core/Src/ditdah/keyboard_map.c
     Core/Src/ditdah/usb_reconnect.c
+    Core/Src/ditdah/inputs.c
+    Core/Src/ditdah/app.c
+    ../decoder/c/morse_decoder.c
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
+    ../decoder/c
 )
 
 # Add project symbols (macros)

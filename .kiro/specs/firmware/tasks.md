@@ -15,7 +15,7 @@ Build with `firmware/build.ps1`, flash with `firmware/flash.ps1`, watch the log 
   - On the board: `e` appears in Notepad on two different computers. If a computer doesn't see the device, add a 2 kΩ resistor from PA12 to 3.3V
   - _Requirements: 1.1–1.5, 8.2_
 
-- [ ] 3. Type with one button
+- [x] 3. Type with one button
   - Add `../decoder/c/morse_decoder.c` and the `../decoder/c` include path to `firmware/CMakeLists.txt`
   - Create `inputs.c` (10 ms debounce, first-edge timing) and `app.c` with one-button mode and the decoder output table; switch `main.c` from the bring-up test to `app_init`/`app_loop`
   - On the board: type HELLO WORLD into Notepad with only the big button
