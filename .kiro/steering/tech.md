@@ -38,6 +38,10 @@ inclusion: always
 | Firmware flash | `cd firmware && .\flash.ps1` |
 | Firmware log | `cd firmware && .\monitor.ps1` |
 
+Judge a command by its exit code and its last line (`Built build\Debug\firmware.elf`, `70/70 passed`), not by whether anything was printed on stderr.
+
+On Windows, build laptop test programs only through `make test`, which puts the .exe in `%TEMP%`. Never compile an .exe inside the repo and run it there: Windows Smart App Control can block a new program (error 4551). If a command fails the same way twice, stop and ask instead of retrying.
+
 ## Rules for all code
 
 - Never commit secrets. Keys go in `.env.local` (Studio) or Vercel's environment settings.

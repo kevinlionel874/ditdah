@@ -151,7 +151,35 @@ int main(void) {
         }
     }
 
-    printf("%d/%d passed", passed, MV_CASE_COUNT);
+    /* -----------------------------------------------------------------------
+     * Extra regression tests (hand-written, not from shared vectors)
+     * --------------------------------------------------------------------- */
+    int extra_passed = 0;
+    int extra_failed = 0;
+
+    /* Regression: tick with now_ms < up_at must return 0 (negative-gap clamp).
+     * key_up at 5000, then md_tick at 4991 (9 ms before key-up): expect 0. */
+    {
+        md_decoder_t dec;
+        md_out_t out[4];
+        md_init(&dec, 120, MD_SINGLE, false);
+        md_key_down(&dec, 4880u, MD_KEY_SINGLE, out, 4);  /* press starts at 4880 */
+        uint8_t nup   = md_key_up(&dec,  5000u, MD_KEY_SINGLE, out, 4); /* a dit */
+        uint8_t ntick = md_tick(&dec,    4991u, out, 4);  /* tick 9 ms BEFORE key-up */
+        (void)nup;
+        if (ntick == 0) {
+            extra_passed++;
+        } else {
+            extra_failed++;
+            fprintf(stderr, "FAIL  negative-gap-tick: expected ntick=0, got %u\n",
+                    (unsigned)ntick);
+        }
+    }
+
+    passed += extra_passed;
+    failed += extra_failed;
+
+    printf("%d/%d passed", passed, MV_CASE_COUNT + 1);
     if (failed > 0) {
         printf(", %d FAILED\n", failed);
         return 1;

@@ -36,13 +36,15 @@ if (-not (Select-String -Path $hidC -Pattern "DITDAH_KEYBOARD_PATCH" -Quiet)) {
     throw "The USB HID files are the CubeMX mouse version (CubeMX regenerated them). Run .\tools\patch-hid-keyboard.ps1, then build again."
 }
 
-# CMake prints normal messages on stderr; Windows PowerShell would treat them as errors under "Stop".
+# CMake prints normal messages (such as "Build type: Debug") on stderr. Windows PowerShell turns each
+# stderr line into an error record, so a caller (or Kiro) sees an error even when the build succeeds.
+# Merge stderr into normal output as plain text and judge success by the exit code alone.
 $ErrorActionPreference = "Continue"
 Push-Location $PSScriptRoot
 try {
-    cmake --preset $Preset
+    cmake --preset $Preset 2>&1 | ForEach-Object { "$_" }
     if ($LASTEXITCODE -ne 0) { throw "CMake configure failed" }
-    cmake --build --preset $Preset
+    cmake --build --preset $Preset 2>&1 | ForEach-Object { "$_" }
     if ($LASTEXITCODE -ne 0) { throw "Build failed" }
     Write-Host "Built build\$Preset\firmware.elf"
 } finally {

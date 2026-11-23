@@ -14,6 +14,8 @@ coverage/
 # Firmware build output (CMake + Ninja, and CubeIDE if used)
 firmware/build/
 firmware/.mxproject
+firmware/build_out*.txt
+*.log
 firmware/**/Debug/
 firmware/**/Release/
 *.o
@@ -25,7 +27,7 @@ firmware/**/Release/
 # C test build output
 decoder/c/build/
 decoder/c/test_decoder
-decoder/c/test_decoder.exe
+decoder/c/*.exe
 
 # OS and editor files
 .DS_Store

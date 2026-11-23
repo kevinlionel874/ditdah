@@ -161,7 +161,8 @@ static void update_wip(md_state_t *s, md_kind_t kind) {
 static uint8_t silence_check(md_state_t *s, uint32_t now_ms,
                               md_out_t *out, uint8_t max_out,
                               uint32_t *silence_out) {
-    uint32_t silence = (uint32_t)(now_ms - s->up_at);
+    int32_t _sdiff = (int32_t)((uint32_t)(now_ms) - (uint32_t)(s->up_at));
+    uint32_t silence = (_sdiff < 0) ? 0u : (uint32_t)_sdiff;
     if (silence > 60000u) silence = 60000u;
 
     if (silence_out) *silence_out = silence;
@@ -218,7 +219,8 @@ uint8_t md_key_down(md_decoder_t *d, uint32_t now_ms, md_key_t key,
     if (s->key_is_down) return 0;
 
     /* Silence duration (before we act) for adaptive update */
-    uint32_t silence = (uint32_t)(now_ms - s->up_at);
+    int32_t _adiff = (int32_t)((uint32_t)(now_ms) - (uint32_t)(s->up_at));
+    uint32_t silence = (_adiff < 0) ? 0u : (uint32_t)_adiff;
     if (silence > 60000u) silence = 60000u;
 
     /* Adaptive speed: only in-letter silences (< 2*unit) update the unit */
@@ -253,7 +255,8 @@ uint8_t md_key_up(md_decoder_t *d, uint32_t now_ms, md_key_t key,
     if (s->mode == (uint8_t)MD_DUAL) {
         is_dit = (key == MD_KEY_DIT) ? 1u : 0u;
     } else {
-        uint32_t press = (uint32_t)(now_ms - s->down_at);
+        int32_t _pdiff = (int32_t)((uint32_t)(now_ms) - (uint32_t)(s->down_at));
+        uint32_t press = (_pdiff < 0) ? 0u : (uint32_t)_pdiff;
         if (press > 60000u) press = 60000u;
         is_dit = (press < (uint32_t)(2u * s->unit)) ? 1u : 0u;
     }
