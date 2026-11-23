@@ -2,7 +2,7 @@
 
 Run these after the decoder spec is done (`cd decoder && npm test` passes). Commit after each task, and save a screenshot of anything interesting to `docs/kiro-moments/`.
 
-- [ ] 1. Create the Next.js app and link the decoder
+- [x] 1. Create the Next.js app and link the decoder
   - In the repo root run `npx create-next-app@latest studio --ts --tailwind --eslint --app --no-src-dir --import-alias "@/*" --use-npm`
   - Add `"@ditdah/decoder": "file:../decoder"` to `studio/package.json` and `transpilePackages: ["@ditdah/decoder"]` to `next.config.ts`
   - Add Vitest (`npm i -D vitest`) with a `test` script, and a smoke test that imports `MORSE` from the decoder

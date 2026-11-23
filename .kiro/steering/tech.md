@@ -33,12 +33,15 @@ inclusion: always
 | Decoder tests (TypeScript) | `cd decoder && npm test` |
 | Decoder tests (C) | `cd decoder/c && make test` |
 | Studio dev server | `cd studio && npm run dev` |
+| Studio tests | `cd studio && npm test` |
 | Studio checks | `cd studio && npm run lint && npm run build` |
 | Firmware build | `cd firmware && .\build.ps1` (or `.\build.ps1 Release`) |
 | Firmware flash | `cd firmware && .\flash.ps1` |
 | Firmware log | `cd firmware && .\monitor.ps1` |
 
 Judge a command by its exit code and its last line (`Built build\Debug\firmware.elf`, `70/70 passed`), not by whether anything was printed on stderr.
+
+The Studio uses Next.js 16, which differs from older Next.js: read `studio/AGENTS.md` and the guides in `studio/node_modules/next/dist/docs/` before writing Studio code. If `npm run build` fails with `EXDEV` on `nextjs-nodejs\Config\config.json` (Next.js saving its telemetry setting), run `$env:NEXT_TELEMETRY_DISABLED = "1"` in that terminal and build again.
 
 On Windows, build laptop test programs only through `make test`, which puts the .exe in `%TEMP%`. Never compile an .exe inside the repo and run it there: Windows Smart App Control can block a new program (error 4551). If a command fails the same way twice, stop and ask instead of retrying.
 
