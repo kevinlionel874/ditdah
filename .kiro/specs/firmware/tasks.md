@@ -21,18 +21,18 @@ Build with `firmware/build.ps1`, flash with `firmware/flash.ps1`, watch the log 
   - On the board: type HELLO WORLD into Notepad with only the big button
   - _Requirements: 2.1–2.3, 3.1, 4.1, 4.2, 4.4_
 
-- [ ] 4. Add feedback and the display
+- [x] 4. Add feedback and the display
   - Create `feedback.c` (motor pulses 40/120 ms, 600 Hz tone, LED) and `display.c` (the layout in design.md, one dirty line per pass)
   - Work out dit or dah at key-up in `app.c` and keep the pattern string
   - On the board: with eyes closed you can tell a dit from a dah by feel; the OLED shows the code, the last letter and the typed text
   - _Requirements: 4.3, 5.1–5.4_
 
-- [ ] 5. Add two-switch mode and the mode button
+- [x] 5. Add two-switch mode and the mode button
   - Two-switch mode with `BTN_DIT`/`JACK_DIT` and `BTN_DAH`/`JACK_DAH` as in design.md; short press of `BTN_MODE` cycles the mode, a 2 s hold toggles sound
   - On the board: HELLO WORLD with the two 30mm buttons, and again with switches in jacks 2 and 3
   - _Requirements: 3.2, 3.4, 3.5_
 
-- [ ] 6. Add sip and puff
+- [x] 6. Add sip and puff
   - Create `breath.c` with the state machine in design.md; split the threshold logic into `breath_logic.c` so it can be tested on the laptop
   - Record soft and hard puffs and sips from the log and set the default thresholds from them
   - On the board, with your own straw: SOS by breath alone, three times in a row

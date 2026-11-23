@@ -54,6 +54,10 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Core/Src/ditdah/keyboard_map.c
     Core/Src/ditdah/usb_reconnect.c
     Core/Src/ditdah/inputs.c
+    Core/Src/ditdah/feedback.c
+    Core/Src/ditdah/display.c
+    Core/Src/ditdah/breath_logic.c
+    Core/Src/ditdah/breath.c
     Core/Src/ditdah/app.c
     ../decoder/c/morse_decoder.c
 )

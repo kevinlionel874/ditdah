@@ -12,6 +12,77 @@
         "chatSessionId": "sess_22b90f54-305a-4e4f-9216-9095d8536240",
         "timestamp": 1795451624454
       }
+    ],
+    "4. Add feedback and the display": [
+      {
+        "executionId": "70bc4a53-2605-4a84-8f30-583721722415",
+        "chatSessionId": "sess_26450c00-f518-4a21-9981-22b989996702",
+        "timestamp": 1795451801131
+      },
+      {
+        "executionId": "70bc4a53-2605-4a84-8f30-583721722415",
+        "chatSessionId": "sess_26450c00-f518-4a21-9981-22b989996702",
+        "timestamp": 1795452332712
+      },
+      {
+        "executionId": "1f18c5e7-f205-44b6-88a0-19928852d685",
+        "chatSessionId": "sess_26450c00-f518-4a21-9981-22b989996702",
+        "timestamp": 1795452580244
+      },
+      {
+        "executionId": "1f18c5e7-f205-44b6-88a0-19928852d685",
+        "chatSessionId": "sess_26450c00-f518-4a21-9981-22b989996702",
+        "timestamp": 1795452744738
+      }
+    ],
+    "5. Add two-switch mode and the mode button": [
+      {
+        "executionId": "ad8f38c3-bd5c-4d8b-b949-336f1af3d7f2",
+        "chatSessionId": "sess_4f6c3d5e-1d16-4c11-9f6d-503565dab44d",
+        "timestamp": 1795452821410
+      },
+      {
+        "executionId": "ad8f38c3-bd5c-4d8b-b949-336f1af3d7f2",
+        "chatSessionId": "sess_4f6c3d5e-1d16-4c11-9f6d-503565dab44d",
+        "timestamp": 1795453132631
+      },
+      {
+        "executionId": "97f09f73-701d-47d8-b88b-b63720179a17",
+        "chatSessionId": "sess_4f6c3d5e-1d16-4c11-9f6d-503565dab44d",
+        "timestamp": 1795453213169
+      },
+      {
+        "executionId": "97f09f73-701d-47d8-b88b-b63720179a17",
+        "chatSessionId": "sess_4f6c3d5e-1d16-4c11-9f6d-503565dab44d",
+        "timestamp": 1795453591449
+      }
+    ],
+    "6. Add sip and puff": [
+      {
+        "executionId": "13accab0-9743-462a-8b64-075d4875c1af",
+        "chatSessionId": "sess_f48ea965-d1ea-44bc-a150-4a75b6f4936d",
+        "timestamp": 1795453701092
+      },
+      {
+        "executionId": "a77d804a-b942-438f-8c31-b798c3d5bddc",
+        "chatSessionId": "sess_f48ea965-d1ea-44bc-a150-4a75b6f4936d",
+        "timestamp": 1795453703590
+      },
+      {
+        "executionId": "a77d804a-b942-438f-8c31-b798c3d5bddc",
+        "chatSessionId": "sess_f48ea965-d1ea-44bc-a150-4a75b6f4936d",
+        "timestamp": 1795454053528
+      },
+      {
+        "executionId": "6603e9f2-87f5-4cbf-820d-685130f0ae4b",
+        "chatSessionId": "sess_f48ea965-d1ea-44bc-a150-4a75b6f4936d",
+        "timestamp": 1795454312346
+      },
+      {
+        "executionId": "6603e9f2-87f5-4cbf-820d-685130f0ae4b",
+        "chatSessionId": "sess_f48ea965-d1ea-44bc-a150-4a75b6f4936d",
+        "timestamp": 1795455172272
+      }
     ]
   }
 }
