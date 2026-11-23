@@ -26,7 +26,11 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#ifdef DITDAH_BRINGUP
+#include "ditdah/bringup.h"   /* hardware check: .\build.ps1 -Bringup */
+#else
 #include "ditdah/app.h"
+#endif
 #include "ditdah/usb_reconnect.h"
 /* USER CODE END Includes */
 
@@ -96,7 +100,11 @@ int main(void)
   MX_USART1_UART_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
+#ifdef DITDAH_BRINGUP
+  bringup_init();
+#else
   app_init();
+#endif
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -106,7 +114,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+#ifdef DITDAH_BRINGUP
+    bringup_loop();
+#else
     app_loop();
+#endif
   }
   /* USER CODE END 3 */
 }

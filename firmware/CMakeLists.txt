@@ -68,9 +68,13 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     ../decoder/c
 )
 
+# Build the hardware bring-up test (bringup.c) instead of the DitDah app: .\build.ps1 -Bringup
+option(DITDAH_BRINGUP "Build the hardware bring-up test instead of the DitDah app" OFF)
+
 # Add project symbols (macros)
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined symbols
+    $<$<BOOL:${DITDAH_BRINGUP}>:DITDAH_BRINGUP>
 )
 
 # Remove wrong libob.a library dependency when using cpp files

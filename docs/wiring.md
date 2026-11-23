@@ -59,11 +59,12 @@ A pin can supply only about 20 mA and the motor needs 60–90 mA, so B0 switches
            │               │
      motor red (+)    1N4007 (stripe end)
            │               │
-     motor black ──────────┴──── 2N2222 collector (C)
+     motor blue (−) ───────┴──── 2N2222 collector (C)
                                  2N2222 base (B) ── 1 kΩ ── B0
                                  2N2222 emitter (E) ── G
 ```
 
+- Our motors have a red (+) and a blue (−) lead; on other motors the minus lead is often black.
 - 2N2222 with the flat, printed side facing you and the legs down: **E, B, C** from left to right (P2N2222A is the reverse: C, B, E).
 - The diode's stripe goes to 3.3V. If it is reversed, the transistor shorts 3.3V to ground when it turns on.
 - Test before connecting B0: touch the free end of the 1 kΩ to 3.3V and the motor should buzz.

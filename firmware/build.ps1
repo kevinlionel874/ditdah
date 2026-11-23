@@ -1,8 +1,11 @@
 # Builds the DitDah firmware with the CMake, Ninja and GCC that ship inside STM32CubeIDE.
 # Usage (from this folder):  .\build.ps1            -> build\Debug\firmware.elf
 #                            .\build.ps1 Release    -> build\Release\firmware.elf
+#                            .\build.ps1 -Bringup   -> the hardware bring-up test instead of the app
+#                            (run .\build.ps1 again without -Bringup to go back to the app)
 param(
     [ValidateSet("Debug", "Release")] [string] $Preset = "Debug",
+    [switch] $Bringup,
     [string] $CubeIde = $env:STM32CUBEIDE_DIR
 )
 $ErrorActionPreference = "Stop"
@@ -42,11 +45,13 @@ if (-not (Select-String -Path $hidC -Pattern "DITDAH_KEYBOARD_PATCH" -Quiet)) {
 $ErrorActionPreference = "Continue"
 Push-Location $PSScriptRoot
 try {
-    cmake --preset $Preset 2>&1 | ForEach-Object { "$_" }
+    $bringupFlag = if ($Bringup) { "ON" } else { "OFF" }
+    cmake --preset $Preset "-DDITDAH_BRINGUP=$bringupFlag" 2>&1 | ForEach-Object { "$_" }
     if ($LASTEXITCODE -ne 0) { throw "CMake configure failed" }
     cmake --build --preset $Preset 2>&1 | ForEach-Object { "$_" }
     if ($LASTEXITCODE -ne 0) { throw "Build failed" }
-    Write-Host "Built build\$Preset\firmware.elf"
+    $what = if ($Bringup) { "the bring-up test" } else { "the DitDah app" }
+    Write-Host "Built build\$Preset\firmware.elf ($what)"
 } finally {
     Pop-Location
 }
